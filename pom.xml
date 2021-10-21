@@ -10,6 +10,8 @@
 
     <modules>
         <module>hw_1_base_operations</module>
+        <module>hw_2_strings</module>
+        <module>reversestring</module>
     </modules>
 
     <packaging>pom</packaging>
