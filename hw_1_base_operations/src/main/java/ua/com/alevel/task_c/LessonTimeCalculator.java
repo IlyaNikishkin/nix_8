@@ -5,10 +5,13 @@ import java.io.IOException;
 
 public class LessonTimeCalculator {
 
-    public void run(BufferedReader reader) throws IOException {
-        final int H = 60;
-        final int START = 9; final int LESSON = 45; final int BREAK_1 = 5; final int BREAK_2 = 15;
+    private final static int H = 60;
+    private final static int START = 9;
+    private final static int LESSON = 45;
+    private final static int BREAK_1 = 5;
+    private final static int BREAK_2 = 15;
 
+    public void run(BufferedReader reader) throws IOException {
         System.out.println("Task 3. Enter your line:");
         String text = null;
         while (true) {
