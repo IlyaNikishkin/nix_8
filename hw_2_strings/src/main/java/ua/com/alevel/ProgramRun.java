@@ -13,32 +13,34 @@ public class ProgramRun {
         try {
             while ((event = reader.readLine()) != null) {
                 switch (event) {
-                    case "1" : {
+                    case "1": {
                         System.out.println("1. Enter your line:");
                         String src = reader.readLine();
                         if (src.isEmpty()) {
                             System.out.println("Your line is empty");
-                        }
-                        else System.out.println(ReverseStringUtil.reverse(src));
+                        } else System.out.println(ReverseStringUtil.reverse(src));
                         preview();
-                    } break;
-                    case "2" : {
+                    }
+                    break;
+                    case "2": {
                         System.out.println("2. Enter \"String src\":");
                         String src = reader.readLine();
                         System.out.println("2. Enter \"String dest\":");
                         String dest = reader.readLine();
                         if (src.isEmpty() || dest.isEmpty()) {
                             System.out.println("You have entered an empty line(s)");
-                        }
-                        else System.out.println(ReverseStringUtil.reverse(src, dest));
+                        } else System.out.println(ReverseStringUtil.reverse(src, dest));
                         preview();
-                    } break;
-                    case "3" : {
-                        String src; int firstIndex = -1; int lastIndex = -1;
+                    }
+                    break;
+                    case "3": {
+                        String src;
+                        int firstIndex = -1;
+                        int lastIndex = -1;
                         System.out.println("3. Enter \"String src\":");
                         do {
                             src = reader.readLine();
-                            if (src.length()<2) {
+                            if (src.length() < 2) {
                                 System.out.println("3. The string contains <2 symbols. Enter \"String src\":");
                             }
                         } while (src.length() < 2);
@@ -68,13 +70,16 @@ public class ProgramRun {
                         } while (lastIndex <= firstIndex || lastIndex > src.length() - 1);
                         System.out.println(ReverseStringUtil.reverse(src, firstIndex, lastIndex));
                         preview();
-                    } break;
-                    case "0" : {
+                    }
+                    break;
+                    case "0": {
                         System.exit(0);
-                    } break;
-                    default:{
+                    }
+                    break;
+                    default: {
                         preview();
-                    } break;
+                    }
+                    break;
                 }
             }
         } catch (IOException e) {

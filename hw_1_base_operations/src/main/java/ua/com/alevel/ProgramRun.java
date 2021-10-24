@@ -1,8 +1,8 @@
 package ua.com.alevel;
 
-import ua.com.alevel.task_a.NumberSumCalculator;
-import ua.com.alevel.task_b.LetterCounter;
-import ua.com.alevel.task_c.LessonTimeCalculator;
+import ua.com.alevel.a.NumberSumCalculator;
+import ua.com.alevel.b.LetterCounter;
+import ua.com.alevel.c.LessonTimeCalculator;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package ua.com.alevel.task_c;
+package ua.com.alevel.c;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,10 @@ public class LessonTimeCalculator {
 
     public void run(BufferedReader reader) throws IOException {
         final int H = 60;
-        final int START = 9; final int LESSON = 45; final int BREAK_1 = 5; final int BREAK_2 = 15;
+        final int START = 9;
+        final int LESSON = 45;
+        final int BREAK_1 = 5;
+        final int BREAK_2 = 15;
 
         System.out.println("Task 3. Enter your line:");
         String text = null;
