@@ -1,9 +1,8 @@
 package ua.com.alevel.util;
 
-import ua.com.alevel.entity.User;
-
 public class DynamicArray {
-    private final int INITIAL_CAPACITY = 2;
+
+    private final int INITIAL_CAPACITY = 2; // чего так мало?
     private final double INCREMENT = 1.5;
     private Object[] array;
     private int capacity;
