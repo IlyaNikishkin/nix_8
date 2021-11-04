@@ -20,10 +20,9 @@ public class AreaOfTriangle {
             double c1 = Double.parseDouble(reader.readLine());
             System.out.print("c2 = ");
             double c2 = Double.parseDouble(reader.readLine());
-            DecimalFormat dF = new DecimalFormat("#.###############");
             double area = Math.abs(((c1 - a1) * (b2 - a2) - (b1 - a1) * (c2 - a2)) / 2);
             if (area == 0) System.out.println("Degenerate triangle");
-            else System.out.println(dF.format(area));
+            else System.out.println(area);
         } catch (Exception e) {
             System.out.println("Invalid input");
         }
