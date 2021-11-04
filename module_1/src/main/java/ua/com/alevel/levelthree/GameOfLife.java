@@ -27,7 +27,7 @@ public class GameOfLife {
                     } catch (Exception e) {
                         System.out.println("Invalid input");
                     }
-                    if (n > 0 && n < MAX_SIZE && m > 0 && m < MAX_SIZE) {
+                    if (n > 0 && n <= MAX_SIZE && m > 0 && m <= MAX_SIZE) {
                         world = new int[n][m];
                         initializeRandomWorld();
                         step = 1;
@@ -86,14 +86,11 @@ public class GameOfLife {
         int[][] next = new int[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (numberOfNeighbours(i, j) < 2 && world[i][j] == 1)
-                    next[i][j] = 0;
-                if ((numberOfNeighbours(i, j) == 2 || numberOfNeighbours(i, j) == 3) && world[i][j] == 1)
-                    next[i][j] = 1;
-                if (numberOfNeighbours(i, j) > 3 && world[i][j] == 1)
-                    next[i][j] = 0;
-                if (numberOfNeighbours(i, j) == 3 && world[i][j] == 0)
-                    next[i][j] = 1;
+                if (world[i][j] == 1) {
+                    if (numberOfNeighbours(i, j) < 2) next[i][j] = 0;
+                    if (numberOfNeighbours(i, j) > 3) next[i][j] = 0;
+                    if (numberOfNeighbours(i, j) == 2 || numberOfNeighbours(i, j) == 3) next[i][j] = 1;
+                } else if (numberOfNeighbours(i, j) == 3) next[i][j] = 1;
             }
         }
         for (int i = 0; i < next.length; i++) {
@@ -105,13 +102,13 @@ public class GameOfLife {
     private static int numberOfNeighbours(int i, int j) {
         int live = 0;
         if (i - 1 >= 0 && j - 1 >= 0) live += world[i - 1][j - 1];
-        if (i - 1 >= 0) live += world[i - 1][j];
+        if (i + 1 < n && j - 1 >= 0) live += world[i + 1][j - 1];
         if (i - 1 >= 0 && j + 1 < m) live += world[i - 1][j + 1];
+        if (i + 1 < n && j + 1 < m) live += world[i + 1][j + 1];
         if (j + 1 < m) live += world[i][j + 1];
         if (j - 1 >= 0) live += world[i][j - 1];
-        if (i + 1 < n && j + 1 < m) live += world[i + 1][j + 1];
         if (i + 1 < n) live += world[i + 1][j];
-        if (i + 1 < n && j - 1 >= 0) live += world[i + 1][j - 1];
+        if (i - 1 >= 0) live += world[i - 1][j];
         return live;
     }
 }
