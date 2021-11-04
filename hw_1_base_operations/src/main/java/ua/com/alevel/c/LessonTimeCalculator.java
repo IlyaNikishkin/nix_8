@@ -1,4 +1,4 @@
-package ua.com.alevel.task_c;
+package ua.com.alevel.c;
 
 import java.io.BufferedReader;
 import java.io.IOException;

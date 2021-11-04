@@ -5,13 +5,13 @@ import java.io.IOException;
 
 public class ChessKnight {
 
-    private static int x;
-    private static int y;
-    private static int newX;
-    private static int newY;
-    private static String src;
+    private int x;
+    private int y;
+    private int newX;
+    private int newY;
+    private String src;
 
-    public static void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader) throws IOException {
         drawBoard(0, 0);
         System.out.println("Lvl-1.Task-2 Set the knight position on the board (example: \"c4\"):");
         src = reader.readLine().toLowerCase();
@@ -38,7 +38,7 @@ public class ChessKnight {
         }
     }
 
-    private static void drawBoard(int posX, int posY) {
+    private void drawBoard(int posX, int posY) {
         for (int i = 8; i > 0; i--) {
             for (int j = 1; j < 9; j++) {
                 if (posX == j && posY == i) System.out.print("  N");
@@ -51,7 +51,7 @@ public class ChessKnight {
         System.out.println("  ______________________\n  A  B  C  D  E  F  G  H");
     }
 
-    private static boolean verify(int posX, int posY) {
+    private boolean verify(int posX, int posY) {
         if (src.length() == 2 && posX > 0 && posX < 9 && posY > 0 && posY < 9)
             return true;
         else {

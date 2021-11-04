@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class BracketBalanceChecker {
 
-    public static void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader) throws IOException {
         int parentheses = 0;
         int boxBrackets = 0;
         int braces = 0;

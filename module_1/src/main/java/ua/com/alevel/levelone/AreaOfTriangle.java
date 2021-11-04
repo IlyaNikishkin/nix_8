@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class AreaOfTriangle {
 
-    public static void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader) throws IOException {
         System.out.print("Lvl-1.Task-3 Enter coordinates of A(a1,a2), B(b1,b2), C(c1,c2)\na1 = ");
         try {
             double a1 = Double.parseDouble(reader.readLine());

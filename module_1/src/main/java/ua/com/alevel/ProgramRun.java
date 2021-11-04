@@ -21,27 +21,27 @@ public class ProgramRun {
             while ((event = reader.readLine()) != null) {
                 switch (event) {
                     case "1" -> {
-                        UniqueNumberCounter.run(reader);
+                        new UniqueNumberCounter().run(reader);
                         preview();
                     }
                     case "2" -> {
-                        ChessKnight.run(reader);
+                        new ChessKnight().run(reader);
                         preview();
                     }
                     case "3" -> {
-                        AreaOfTriangle.run(reader);
+                        new AreaOfTriangle().run(reader);
                         preview();
                     }
                     case "4" -> {
-                        BracketBalanceChecker.run(reader);
+                        new BracketBalanceChecker().run(reader);
                         preview();
                     }
                     case "5" -> {
-                        TreeDepth.run(reader);
+                        new TreeDepth().run(reader);
                         preview();
                     }
                     case "6" -> {
-                        GameOfLife.run(reader);
+                        new GameOfLife().run(reader);
                         preview();
                     }
                     case "0" -> System.exit(0);

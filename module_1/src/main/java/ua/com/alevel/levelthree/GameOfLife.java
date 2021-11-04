@@ -5,13 +5,13 @@ import java.io.IOException;
 
 public class GameOfLife {
 
-    private final static int MAX_SIZE = 50;
-    private static int[][] world;
-    private static int n;
-    private static int m;
-    private static int step = 0;
+    private final int MAX_SIZE = 50;
+    private int[][] world;
+    private int n;
+    private int m;
+    private int step = 0;
 
-    public static void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader) throws IOException {
         String event;
         System.out.println("Lvl-3.Task-1");
         do {
@@ -62,7 +62,7 @@ public class GameOfLife {
         } while (!event.equals("0"));
     }
 
-    private static void initializeRandomWorld() {
+    private void initializeRandomWorld() {
         step = 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -71,7 +71,7 @@ public class GameOfLife {
         }
     }
 
-    private static void drawWorld() {
+    private void drawWorld() {
         System.out.println("Step " + step);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -81,7 +81,7 @@ public class GameOfLife {
         }
     }
 
-    private static void toNextStep() {
+    private void toNextStep() {
         int[][] next = new int[n][m];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -98,7 +98,7 @@ public class GameOfLife {
         step++;
     }
 
-    private static int numberOfNeighbours(int i, int j) {
+    private int numberOfNeighbours(int i, int j) {
         int live = 0;
         if (i - 1 >= 0 && j - 1 >= 0) live += world[i - 1][j - 1];
         if (i + 1 < n && j - 1 >= 0) live += world[i + 1][j - 1];

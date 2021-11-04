@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class UniqueNumberCounter {
 
-    public static void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader) throws IOException {
         System.out.println("Lvl-1.Task-1 Enter your line (example: '\"6 7 3 3 0'\"):");
         String src = reader.readLine();
         src = src.replaceAll("\\s", "");

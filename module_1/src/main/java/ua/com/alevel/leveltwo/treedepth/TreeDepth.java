@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class TreeDepth {
 
-    public static void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader) throws IOException {
         System.out.println("Lvl-2.Task-2 Enter nodes (example: \"23 43 5 3 6 14\",\n" +
                 "where the first number is a root, the rest are added sequentially):");
         String[] nodes = reader.readLine().split(" ");
