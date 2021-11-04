@@ -8,13 +8,13 @@ public class TreeDepth {
     public void run(BufferedReader reader) throws IOException {
         System.out.println("Lvl-2.Task-2 Enter nodes (example: \"23 43 5 3 6 14\",\n" +
                 "where the first number is a root, the rest are added sequentially):");
-        String[] nodes = reader.readLine().split(" ");
+        String[] nodes = reader.readLine().split("\\s");
         try {
             TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
             for (int i = 1; i < nodes.length; i++) {
-                TreeNode.insert(root, Integer.parseInt(nodes[i]));
+                root.insert(root, Integer.parseInt(nodes[i]));
             }
-            System.out.println(TreeNode.maxDepth(root));
+            System.out.println(root.maxDepth(root));
         } catch (Exception e) {
             System.out.println("Invalid input");
         }

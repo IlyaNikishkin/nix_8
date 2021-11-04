@@ -10,14 +10,14 @@ public class TreeNode {
         val = x;
     }
 
-    public static int maxDepth(TreeNode node) {
+    public int maxDepth(TreeNode node) {
         if (node != null)
             return 1 + Math.max(maxDepth(node.left), maxDepth(node.right));
         else
             return 0;
     }
 
-    public static void insert(TreeNode node, int value) {
+    public void insert(TreeNode node, int value) {
         if (value < node.val) {
             if (node.left != null) {
                 insert(node.left, value);
