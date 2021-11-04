@@ -66,7 +66,6 @@ public class GameOfLife {
         } while (!event.equals("0"));
     }
 
-
     private static void initializeRandomWorld() {
         step = 1;
         for (int i = 0; i < n; i++) {
