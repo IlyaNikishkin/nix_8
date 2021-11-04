@@ -6,19 +6,19 @@ import java.io.IOException;
 public class GameOfLife {
 
     private final static int MAX_SIZE = 50;
-    private static int world[][];
+    private static int[][] world;
     private static int n;
     private static int m;
     private static int step = 0;
-    private static String event;
 
     public static void run(BufferedReader reader) throws IOException {
+        String event;
         System.out.println("Lvl-3.Task-1");
         do {
             System.out.println("1 - New world | 2 - Next step | 3 - Select step | 0 - Exit");
             event = reader.readLine();
             switch (event) {
-                case "1": {
+                case "1" -> {
                     try {
                         System.out.print("New world. Enter size of the world field n*m (from 1 to 50)\nn = ");
                         n = Integer.parseInt(reader.readLine());
@@ -34,15 +34,13 @@ public class GameOfLife {
                         drawWorld();
                     } else System.out.println("Invalid input");
                 }
-                break;
-                case "2": {
+                case "2" -> {
                     if (step != 0) {
                         toNextStep();
                         drawWorld();
                     } else System.out.println("World is not found");
                 }
-                break;
-                case "3": {
+                case "3" -> {
                     if (step == 0) {
                         System.out.println("World is not found");
                     } else {
@@ -61,7 +59,6 @@ public class GameOfLife {
                         } else System.out.println("Incorrect input. h <= Step");
                     }
                 }
-                break;
             }
         } while (!event.equals("0"));
     }

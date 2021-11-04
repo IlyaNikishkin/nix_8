@@ -20,44 +20,32 @@ public class ProgramRun {
         try {
             while ((event = reader.readLine()) != null) {
                 switch (event) {
-                    case "1": {
+                    case "1" -> {
                         UniqueNumberCounter.run(reader);
                         preview();
                     }
-                    break;
-                    case "2": {
+                    case "2" -> {
                         ChessKnight.run(reader);
                         preview();
                     }
-                    break;
-                    case "3": {
+                    case "3" -> {
                         AreaOfTriangle.run(reader);
                         preview();
                     }
-                    break;
-                    case "4": {
+                    case "4" -> {
                         BracketBalanceChecker.run(reader);
                         preview();
                     }
-                    break;
-                    case "5": {
+                    case "5" -> {
                         TreeDepth.run(reader);
                         preview();
                     }
-                    break;
-                    case "6": {
+                    case "6" -> {
                         GameOfLife.run(reader);
                         preview();
                     }
-                    break;
-                    case "0": {
-                        System.exit(0);
-                    }
-                    break;
-                    default: {
-                        preview();
-                    }
-                    break;
+                    case "0" -> System.exit(0);
+                    default -> preview();
                 }
             }
         } catch (IOException e) {
@@ -66,12 +54,13 @@ public class ProgramRun {
     }
 
     private static void preview() {
-        System.out.println("Enter 1 to open Lvl-1.Task-1\n"
-                + "Enter 2 to open Lvl-1.Task-2\n"
-                + "Enter 3 to open Lvl-1.Task-3\n"
-                + "Enter 4 to open Lvl-2.Task-1\n"
-                + "Enter 5 to open Lvl-2.Task-2\n"
-                + "Enter 6 to open Lvl-3.Task-1\n"
-                + "Enter 0 to exit: ");
+        System.out.println("""
+                Enter 1 to open Lvl-1.Task-1
+                Enter 2 to open Lvl-1.Task-2
+                Enter 3 to open Lvl-1.Task-3
+                Enter 4 to open Lvl-2.Task-1
+                Enter 5 to open Lvl-2.Task-2
+                Enter 6 to open Lvl-3.Task-1
+                Enter 0 to exit:\s""");
     }
 }

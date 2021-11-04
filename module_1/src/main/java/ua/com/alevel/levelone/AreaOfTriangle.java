@@ -2,7 +2,6 @@ package ua.com.alevel.levelone;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.text.DecimalFormat;
 
 public class AreaOfTriangle {
 

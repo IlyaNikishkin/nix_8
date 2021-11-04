@@ -18,7 +18,7 @@ public class ChessKnight {
         try {
             x = src.charAt(0) - (int) 'a' + 1;
             y = Character.digit(src.charAt(1), 10);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         if (verify(x, y)) {
             drawBoard(x, y);
@@ -27,7 +27,7 @@ public class ChessKnight {
             try {
                 newX = src.charAt(0) - (int) 'a' + 1;
                 newY = Character.digit(src.charAt(1), 10);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             if (verify(newX, newY))
                 if ((Math.abs(x - newX) == 1 && Math.abs(y - newY) == 2)
