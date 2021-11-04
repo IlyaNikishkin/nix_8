@@ -30,7 +30,6 @@ public class GameOfLife {
                     if (n > 0 && n <= MAX_SIZE && m > 0 && m <= MAX_SIZE) {
                         world = new int[n][m];
                         initializeRandomWorld();
-                        step = 1;
                         drawWorld();
                     } else System.out.println("Invalid input");
                 }
