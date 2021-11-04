@@ -12,11 +12,30 @@ public class TreeDepth {
         try {
             TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
             for (int i = 1; i < nodes.length; i++) {
-                root.insert(root, Integer.parseInt(nodes[i]));
+                insert(root, Integer.parseInt(nodes[i]));
             }
-            System.out.println(root.maxDepth(root));
+            System.out.println(maxDepth(root));
         } catch (Exception e) {
             System.out.println("Invalid input");
+        }
+    }
+
+    private int maxDepth(TreeNode node) {
+        if (node != null)
+            return 1 + Math.max(maxDepth(node.left), maxDepth(node.right));
+        else
+            return 0;
+    }
+
+    private void insert(TreeNode node, int value) {
+        if (value < node.val) {
+            if (node.left != null) {
+                insert(node.left, value);
+            } else node.left = new TreeNode(value);
+        } else if (value > node.val) {
+            if (node.right != null) {
+                insert(node.right, value);
+            } else node.right = new TreeNode(value);
         }
     }
 }
