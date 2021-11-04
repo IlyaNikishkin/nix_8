@@ -37,8 +37,7 @@ public class GameOfLife {
                 break;
                 case "2": {
                     if (step != 0) {
-                        simulateWorld(step + 1);
-                        step++;
+                        toNextStep();
                         drawWorld();
                     } else System.out.println("World is not found");
                 }
@@ -55,10 +54,11 @@ public class GameOfLife {
                             System.out.println("Invalid input");
                         }
                         if (h > step) {
-                            simulateWorld(h);
-                            step = h;
-                            drawWorld();
-                        } else System.out.println("Invalid input. h <= Step");
+                            for (int k = step; k < h; k++) {
+                                toNextStep();
+                                drawWorld();
+                            }
+                        } else System.out.println("Incorrect input. h <= Step");
                     }
                 }
                 break;
@@ -86,25 +86,24 @@ public class GameOfLife {
         }
     }
 
-    private static void simulateWorld(int h) {
-        for (int k = step; k < h; k++) {
-            int[][] next = new int[n][m];
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    if (numberOfNeighbours(i, j) < 2 && world[i][j] == 1)
-                        next[i][j] = 0;
-                    if ((numberOfNeighbours(i, j) == 2 || numberOfNeighbours(i, j) == 3) && world[i][j] == 1)
-                        next[i][j] = 1;
-                    if (numberOfNeighbours(i, j) > 3 && world[i][j] == 1)
-                        next[i][j] = 0;
-                    if (numberOfNeighbours(i, j) == 3 && world[i][j] == 0)
-                        next[i][j] = 1;
-                }
-            }
-            for (int i = 0; i < next.length; i++) {
-                System.arraycopy(next[i], 0, world[i], 0, next[i].length);
+    private static void toNextStep() {
+        int[][] next = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (numberOfNeighbours(i, j) < 2 && world[i][j] == 1)
+                    next[i][j] = 0;
+                if ((numberOfNeighbours(i, j) == 2 || numberOfNeighbours(i, j) == 3) && world[i][j] == 1)
+                    next[i][j] = 1;
+                if (numberOfNeighbours(i, j) > 3 && world[i][j] == 1)
+                    next[i][j] = 0;
+                if (numberOfNeighbours(i, j) == 3 && world[i][j] == 0)
+                    next[i][j] = 1;
             }
         }
+        for (int i = 0; i < next.length; i++) {
+            System.arraycopy(next[i], 0, world[i], 0, next[i].length);
+        }
+        step++;
     }
 
     private static int numberOfNeighbours(int i, int j) {
