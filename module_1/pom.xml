@@ -11,19 +11,6 @@
 
     <artifactId>module_1</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ua.com.alevel</groupId>
-            <artifactId>reversestring</artifactId>
-            <version>${reversestring.version}</version>
-        </dependency>
-    </dependencies>
-
     <properties>
         <java.version>17</java.version>
         <commons.lang3.version>3.12.0</commons.lang3.version>
