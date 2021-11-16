@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ua.com.alevel</groupId>
+    <groupId>ua.com.ua.com.alevel</groupId>
     <artifactId>nix_8</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -14,6 +14,7 @@
         <module>reversestring</module>
         <module>hw_3_start_oop</module>
         <module>module_1</module>
+        <module>hw_4_logs_and_test</module>
     </modules>
 
     <packaging>pom</packaging>

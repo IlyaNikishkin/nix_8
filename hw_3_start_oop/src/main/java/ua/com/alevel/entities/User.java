@@ -1,4 +1,4 @@
-package ua.com.alevel.entity;
+package ua.com.alevel.entities;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
 package ua.com.alevel.service;
 
 import ua.com.alevel.dao.UserDao;
-import ua.com.alevel.entity.User;
+import ua.com.alevel.entities.User;
 import ua.com.alevel.util.DynamicArray;
 
 public class UserService {

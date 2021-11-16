@@ -1,6 +1,8 @@
-package ua.com.alevel.controller;
+package ua.com.alevel.controllers;
 
-import ua.com.alevel.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ua.com.alevel.entities.User;
 import ua.com.alevel.service.UserService;
 import ua.com.alevel.util.DynamicArray;
 
@@ -10,55 +12,40 @@ import java.io.InputStreamReader;
 
 public class UserController {
 
+    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
+
     private final UserService userService = new UserService();
 
     public void run() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("select your option");
         String position;
         try {
             runNavigation();
-            while ((position = reader.readLine()) != null) {
-                crud(position, reader);
-                position = reader.readLine();
-                if (position.equals("0")) {
-                    System.exit(0);
-                }
+            while ((position = reader.readLine()) != null && !position.equals("0")) {
                 crud(position, reader);
             }
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
         }
     }
 
     private void runNavigation() {
-        System.out.println();
-        System.out.println("if you want create user, please enter 1");
-        System.out.println("if you want update user, please enter 2");
-        System.out.println("if you want delete user, please enter 3");
-        System.out.println("if you want findById user, please enter 4");
-        System.out.println("if you want findAll user, please enter 5");
-        System.out.println("if you want exit, please enter 0");
-        System.out.println();
+        System.out.println("""
+                1 - New User
+                2 - Update User
+                3 - Delete User
+                4 - Find User by ID
+                5 - Find All Users
+                0 - Back to Main Menu""");
     }
 
     private void crud(String position, BufferedReader reader) {
         switch (position) {
-            case "1":
-                create(reader);
-                break;
-            case "2":
-                update(reader);
-                break;
-            case "3":
-                delete(reader);
-                break;
-            case "4":
-                findById(reader);
-                break;
-            case "5":
-                findAll(reader);
-                break;
+            case "1" -> create(reader);
+            case "2" -> update(reader);
+            case "3" -> delete(reader);
+            case "4" -> findById(reader);
+            case "5" -> findAll();
         }
         runNavigation();
     }
@@ -66,9 +53,9 @@ public class UserController {
     private void create(BufferedReader reader) {
         System.out.println("UserController.create");
         try {
-            System.out.println("Please, enter your name");
+            System.out.print("user name: ");
             String name = reader.readLine();
-            System.out.println("Please, enter your age");
+            System.out.print("user age: ");
             String ageString = reader.readLine();
             int age = Integer.parseInt(ageString);
             if (name.isBlank() || age < 0) System.out.println("Invalid input");
@@ -79,20 +66,20 @@ public class UserController {
                 userService.create(user);
             }
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("The age is not an integer");
+            System.out.println("Age must be an integer");
         }
     }
 
     private void update(BufferedReader reader) {
         System.out.println("UserController.update");
         try {
-            System.out.println("Please, enter id");
+            System.out.print("user id: ");
             String id = reader.readLine();
-            System.out.println("Please, enter your name");
+            System.out.print("new user name: ");
             String name = reader.readLine();
-            System.out.println("Please, enter your age");
+            System.out.print("new user age: ");
             String ageString = reader.readLine();
             int age = Integer.parseInt(ageString);
             if (name.isBlank() || age < 0 || id.isBlank()) System.out.println("Invalid input");
@@ -104,44 +91,44 @@ public class UserController {
                 userService.update(user);
             }
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("The age is not an integer");
+            System.out.println("Age must be an integer");
         }
     }
 
     private void delete(BufferedReader reader) {
         System.out.println("UserController.delete");
         try {
-            System.out.println("Please, enter id");
+            System.out.print("user id: ");
             String id = reader.readLine();
-            if (id.isBlank()) System.out.println("Empty id");
+            if (id.isBlank()) System.out.println("id empty");
             else userService.delete(id);
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
         }
     }
 
     private void findById(BufferedReader reader) {
         System.out.println("UserController.findById");
         try {
-            System.out.println("Please, enter id");
+            System.out.print("user id: ");
             String id = reader.readLine();
-            if (id.isBlank()) System.out.println("Empty id");
+            if (id.isBlank()) System.out.println("id empty");
             else {
                 User user = userService.findById(id);
                 if (user != null) System.out.println("user = " + user);
             }
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
         }
     }
 
-    private void findAll(BufferedReader reader) {
+    private void findAll() {
         System.out.println("UserController.findAll");
         DynamicArray users = userService.findAll();
         if (users != null && users.size() != 0) {
             users.out();
-        } else System.out.println("users is empty");
+        } else System.out.println("users empty");
     }
 }

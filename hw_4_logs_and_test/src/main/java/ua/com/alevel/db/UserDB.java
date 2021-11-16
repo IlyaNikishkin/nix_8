@@ -1,11 +1,16 @@
 package ua.com.alevel.db;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ua.com.alevel.entities.User;
 import ua.com.alevel.util.DynamicArray;
 
 import java.util.UUID;
 
 public class UserDB {
+
+    private static final Logger LOGGER_INFO = LoggerFactory.getLogger("info");
+    private static final Logger LOGGER_WARN = LoggerFactory.getLogger("warn");
 
     private final DynamicArray users;
     private static UserDB instance;
@@ -24,6 +29,7 @@ public class UserDB {
     public void create(User user) {
         user.setId(generateId());
         users.add(user);
+        LOGGER_INFO.info("user added, userId=" + user.getId());
     }
 
     public void update(User user) {
@@ -31,14 +37,19 @@ public class UserDB {
         if (current != null) {
             current.setAge(user.getAge());
             current.setName(user.getName());
+            LOGGER_INFO.info("user updated, userId=" + user.getId());
+        } else {
+            LOGGER_WARN.warn("user updating failed, user not found, userId=" + user.getId());
         }
     }
 
     public void delete(String id) {
         try {
             users.delete(findPositionById(id));
+            LOGGER_INFO.info("user deleted, userId=" + id);
         } catch (Exception e) {
-            System.out.println("user is not found");
+            System.out.println("user not found");
+            LOGGER_WARN.warn("user deleting failed, user not found, userId=" + id);
         }
     }
 
@@ -47,7 +58,7 @@ public class UserDB {
         try {
             user = (User) users.getElement(findPositionById(id));
         } catch (Exception e) {
-            System.out.println("user is not found");
+            System.out.println("user not found");
             user = null;
         }
         return user;
