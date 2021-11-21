@@ -37,7 +37,10 @@ public class IntegerController {
     private void mathSetMethods(String position, BufferedReader reader) {
         switch (position) {
             case "1" -> add(reader);
-            case "2" -> {out(mathSet); System.out.println();}
+            case "2" -> {
+                out(mathSet);
+                System.out.println();
+            }
             case "3" -> getValueByIndex(reader);
             case "4" -> join(reader);
             case "5" -> intersection(reader);

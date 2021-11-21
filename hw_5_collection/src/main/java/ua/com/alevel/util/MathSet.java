@@ -208,7 +208,6 @@ public class MathSet<T extends Number & Comparable<T>> {
             array[i] = mathSet[i + firstIndex];
         }
         return (T[]) array;
-
     }
 
     public MathSet<T> cut(int firstIndex, int lastIndex) {
