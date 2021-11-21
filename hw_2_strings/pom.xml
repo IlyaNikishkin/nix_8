@@ -32,6 +32,12 @@
             <artifactId>reversestring</artifactId>
             <version>${reversestring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ua.com.ua.com.alevel</groupId>
+            <artifactId>reversestring</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

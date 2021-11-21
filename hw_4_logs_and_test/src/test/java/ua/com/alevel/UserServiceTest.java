@@ -1,6 +1,5 @@
 package ua.com.alevel;
 
-import org.junit.AfterClass;
 import org.junit.jupiter.api.*;
 import ua.com.alevel.entities.Post;
 import ua.com.alevel.entities.User;
