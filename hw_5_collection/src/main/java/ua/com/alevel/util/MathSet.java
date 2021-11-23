@@ -170,7 +170,7 @@ public class MathSet<T extends Number & Comparable<T>> {
         } else throw new NoSuchElementException();
     }
 
-    public double getAverage() {
+    public Number getAverage() {
         if (size > 0) {
             double sum = 0;
             for (int i = 0; i < size; i++) {
@@ -182,12 +182,12 @@ public class MathSet<T extends Number & Comparable<T>> {
         }
     }
 
-    public double getMedian() {
+    public Number getMedian() {
         if (size > 0) {
             sortAsc();
             if (size % 2 == 0) {
-                return (get(size / 2).doubleValue() + get(size / 2 + 1).doubleValue()) / 2;
-            } else return get((size - 1) / 2).doubleValue();
+                return (get(size / 2).doubleValue() + get(size / 2 - 1).doubleValue()) / 2;
+            } else return get((size - 1) / 2);
         } else {
             throw new NoSuchElementException();
         }
