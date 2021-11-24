@@ -212,7 +212,12 @@ public class MathSet<T extends Number & Comparable<T>> {
 
     public MathSet<T> cut(int firstIndex, int lastIndex) {
         int cutSize = lastIndex - firstIndex + 1;
-        MathSet<T> cutMathSet = new MathSet<>(cutSize);
+        MathSet<T> cutMathSet;
+        if (cutSize > DEFAULT_CAPACITY) {
+            cutMathSet = new MathSet<>(cutSize);
+        } else {
+            cutMathSet = new MathSet<>();
+        }
         for (int i = 0; i < cutSize; i++) {
             cutMathSet.set(i, mathSet[firstIndex + i]);
             cutMathSet.size++;
