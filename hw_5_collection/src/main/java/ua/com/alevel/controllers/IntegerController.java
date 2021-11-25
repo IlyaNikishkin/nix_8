@@ -65,7 +65,7 @@ public class IntegerController {
         System.out.print("Enter integer numbers (example 4 -5 6 34): ");
         try {
             String src = reader.readLine();
-            String[] str = src.split("\\s");
+            String[] str = src.split("\\s+");
             Integer[] numbers = new Integer[str.length];
             for (int i = 0; i < numbers.length; i++) {
                 numbers[i] = Integer.valueOf(str[i]);

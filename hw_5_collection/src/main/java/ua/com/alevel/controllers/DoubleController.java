@@ -65,7 +65,7 @@ public class DoubleController {
         System.out.print("Enter double numbers (example 4 -5 6 34): ");
         try {
             String src = reader.readLine();
-            String[] str = src.split("\\s");
+            String[] str = src.split("\\s+");
             Double[] numbers = new Double[str.length];
             for (int i = 0; i < numbers.length; i++) {
                 numbers[i] = Double.valueOf(str[i]);
