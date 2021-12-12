@@ -65,7 +65,7 @@ public class Date {
             }
             tempYear = tempYear + integer;
             tempDay = (int) rest;
-            if ((tempYear % 4 == 0 && tempYear % 100 != 0) || tempYear % 400 == 0) {
+            if (isLeapYear(tempYear)) {
                 for (int i = 1; i < DAYS_OFFSET_LEAP_YEAR.length; i++) {
                     if (tempDay >= DAYS_OFFSET_LEAP_YEAR[i - 1] && tempDay < DAYS_OFFSET_LEAP_YEAR[i]) {
                         tempMonth = i;
@@ -100,7 +100,7 @@ public class Date {
     public long timeWithoutYears() {
         int days = day - 1 + DAYS_OFFSET[month - 1];
         if (month > 2) {
-            if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) days++;
+            if (isLeapYear(year)) days++;
         }
         return ms + 1000 * (sec + 60 * (min + 60 * (hour + 24L * days)));
     }
@@ -247,7 +247,7 @@ public class Date {
             }
         }
         int leapYearDays = (year + 3) / 4 + (year + 399) / 400 - (year + 99) / 100;
-        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+        if (isLeapYear(year)) {
             time = ms + 1000 * (sec + 60 * (min + 60 * (hour + 24 * (day - 1 + DAYS_OFFSET_LEAP_YEAR[month - 1] + 365L * year + leapYearDays))));
         } else {
             time = ms + 1000 * (sec + 60 * (min + 60 * (hour + 24 * (day - 1 + DAYS_OFFSET[month - 1] + 365L * year + leapYearDays))));
@@ -261,5 +261,9 @@ public class Date {
             splitStr[splitStr.length - 1] = splitStr[splitStr.length - 1].substring(0, splitStr[splitStr.length - 1].length() - 1);
         }
         return splitStr;
+    }
+
+    private static boolean isLeapYear (int year){
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 }
