@@ -23,6 +23,7 @@ public class Controller {
         int inputMethod = 1;
         int outputMethod = 1;
         try {
+            System.out.println("");
             runNavigation();
             while ((position = reader.readLine()) != null) {
                 switch (position) {
@@ -91,29 +92,29 @@ public class Controller {
                             try {
                                 Date date = new Date(stringDate, FORMATS[inputMethod - 1]);
                                 long ms = 0;
-                                int sec = 0;
-                                int min = 0;
-                                int hour = 0;
-                                int day = 0;
-                                int year = 0;
+                                long sec = 0;
+                                long min = 0;
+                                long hour = 0;
+                                long day = 0;
+                                long year = 0;
                                 System.out.print("Введите число милисекунд, которое хотите прибавить: ");
                                 String str = reader.readLine().trim();
                                 if (!str.isEmpty()) ms = Long.parseLong(str);
                                 System.out.print("Введите число секунд, которое хотите прибавить: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) sec = Integer.parseInt(str);
+                                if (!str.isEmpty()) sec = Long.parseLong(str);
                                 System.out.print("Введите число минут, которое хотите прибавить: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) min = Integer.parseInt(str);
+                                if (!str.isEmpty()) min = Long.parseLong(str);
                                 System.out.print("Введите число часов, которое хотите прибавить: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) hour = Integer.parseInt(str);
+                                if (!str.isEmpty()) hour = Long.parseLong(str);
                                 System.out.print("Введите число дней, которое хотите прибавить: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) day = Integer.parseInt(str);
+                                if (!str.isEmpty()) day = Long.parseLong(str);
                                 System.out.print("Введите число лет, которое хотите прибавить: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) year = Integer.parseInt(str);
+                                if (!str.isEmpty()) year = Long.parseLong(str);
                                 date.addTime(ms, sec, min, hour, day, year);
                                 System.out.println(date.toString(FORMATS[outputMethod - 1]));
                             } catch (NumberFormatException | IndexOutOfBoundsException e) {
@@ -128,29 +129,29 @@ public class Controller {
                             try {
                                 Date date = new Date(stringDate, FORMATS[inputMethod - 1]);
                                 long ms = 0;
-                                int sec = 0;
-                                int min = 0;
-                                int hour = 0;
-                                int day = 0;
-                                int year = 0;
+                                long sec = 0;
+                                long min = 0;
+                                long hour = 0;
+                                long day = 0;
+                                long year = 0;
                                 System.out.print("Введите число милисекунд, которое хотите вычесть: ");
                                 String str = reader.readLine().trim();
                                 if (!str.isEmpty()) ms = Long.parseLong(str);
                                 System.out.print("Введите число секунд, которое хотите вычесть: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) sec = Integer.parseInt(str);
+                                if (!str.isEmpty()) sec = Long.parseLong(str);
                                 System.out.print("Введите число минут, которое хотите вычесть: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) min = Integer.parseInt(str);
+                                if (!str.isEmpty()) min = Long.parseLong(str);
                                 System.out.print("Введите число часов, которое хотите вычесть: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) hour = Integer.parseInt(str);
+                                if (!str.isEmpty()) hour = Long.parseLong(str);
                                 System.out.print("Введите число дней, которое хотите вычесть: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) day = Integer.parseInt(str);
+                                if (!str.isEmpty()) day = Long.parseLong(str);
                                 System.out.print("Введите число лет, которое хотите вычесть: ");
                                 str = reader.readLine().trim();
-                                if (!str.isEmpty()) year = Integer.parseInt(str);
+                                if (!str.isEmpty()) year = Long.parseLong(str);
                                 if (date.addTime(-ms, -sec, -min, -hour, -day, -year)) {
                                     System.out.println(date.toString(FORMATS[outputMethod - 1]));
                                 } else System.out.println("Результат выходит за рамки календаря по нижнему пределу");

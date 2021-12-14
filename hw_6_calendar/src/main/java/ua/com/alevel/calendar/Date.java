@@ -9,7 +9,7 @@ public class Date {
     private static final String[] MONTHS = {"january", "february", "march", "april", "may",
             "june", "july", "august", "september", "october", "november", "december"};
     private long time;
-    private int year;
+    private long year;
     private int month;
     private int day;
     private int hour;
@@ -21,11 +21,11 @@ public class Date {
         time = toMilliseconds(stringValue, format);
     }
 
-    public boolean addTime(long milliseconds, int seconds, int minutes, int hours, int days, int years) {
+    public boolean addTime(long milliseconds, long seconds, long minutes, long hours, long days, long years) {
         long tempTime = time;
         int tempMonth = month;
-        int tempYear;
-        int tempDay;
+        long tempYear;
+        long tempDay;
         int tempHour;
         int tempMin;
         int tempSec;
@@ -38,19 +38,19 @@ public class Date {
         tempMin = (int) (rest % 60);
         rest = (rest - tempMin) / 60;
         tempHour = (int) (rest % 24);
-        tempDay = (int) ((rest - tempHour) / 24);
+        tempDay = (rest - tempHour) / 24;
         rest = tempDay % (4 * 25 * (366 + 3 * 365) - 3);
-        int integer = tempDay / (4 * 25 * (366 + 3 * 365) - 3);
+        long integer = tempDay / (4 * 25 * (366 + 3 * 365) - 3);
         tempYear = integer * 400;
-        tempDay = (int) rest;
+        tempDay = rest;
         rest = tempDay % (25 * (366 + 3 * 365) - 1);
         integer = tempDay / (25 * (366 + 3 * 365) - 1);
         tempYear = tempYear + integer * 100;
-        tempDay = (int) rest;
+        tempDay = rest;
         rest = tempDay % (366 + 3 * 365);
         integer = tempDay / (366 + 3 * 365);
         tempYear = tempYear + integer * 4;
-        tempDay = (int) rest;
+        tempDay = rest;
         if (tempDay < 0 || tempHour < 0 || tempMin < 0 || tempSec < 0 || tempMs < 0) {
             return false;
         } else {
@@ -87,7 +87,7 @@ public class Date {
                 time = tempTime;
                 year = tempYear;
                 month = tempMonth;
-                day = tempDay;
+                day = (int) tempDay;
                 hour = tempHour;
                 min = tempMin;
                 sec = tempSec;
@@ -182,7 +182,7 @@ public class Date {
         return time;
     }
 
-    public int getYear() {
+    public long getYear() {
         return year;
     }
 
@@ -196,7 +196,7 @@ public class Date {
                 if (dateValue[1].isEmpty()) month = 1;
                 else month = Integer.parseInt(dateValue[1]);
                 if (dateValue[2].isEmpty()) year = 0;
-                else year = Integer.parseInt(dateValue[2]);
+                else year = Long.parseLong(dateValue[2]);
             }
             case "m/d/yyyy" -> {
                 String[] dateValue = split(dateBlocks[0], "/");
@@ -205,7 +205,7 @@ public class Date {
                 if (dateValue[0].isEmpty()) month = 1;
                 else month = Integer.parseInt(dateValue[1]);
                 if (dateValue[2].isEmpty()) year = 0;
-                else year = Integer.parseInt(dateValue[2]);
+                else year = Long.parseLong(dateValue[2]);
             }
             case "mmm-d-yy" -> {
                 String[] dateValue = split(dateBlocks[0], "-");
@@ -214,7 +214,7 @@ public class Date {
                 if (dateValue[0].isEmpty()) month = 1;
                 else month = Arrays.asList(MONTHS).indexOf(dateValue[0].toLowerCase()) + 1;
                 if (dateValue[2].isEmpty()) year = 0;
-                else year = Integer.parseInt(dateValue[2]);
+                else year = Long.parseLong(dateValue[2]);
             }
 
             case "dd-mmm-yyyy" -> {
@@ -224,7 +224,7 @@ public class Date {
                 if (dateValue[1].isEmpty()) month = 1;
                 else month = Arrays.asList(MONTHS).indexOf(dateValue[1].toLowerCase()) + 1;
                 if (dateValue[2].isEmpty()) year = 0;
-                else year = Integer.parseInt(dateValue[2]);
+                else year = Long.parseLong(dateValue[2]);
             }
         }
         hour = 0;
@@ -246,7 +246,7 @@ public class Date {
                 if (!timeValue[3].isEmpty()) ms = Integer.parseInt(timeValue[3]);
             }
         }
-        int leapYearDays = (year + 3) / 4 + (year + 399) / 400 - (year + 99) / 100;
+        long leapYearDays = (year + 3) / 4 + (year + 399) / 400 - (year + 99) / 100;
         if (isLeapYear(year)) {
             time = ms + 1000 * (sec + 60 * (min + 60 * (hour + 24 * (day - 1 + DAYS_OFFSET_LEAP_YEAR[month - 1] + 365L * year + leapYearDays))));
         } else {
@@ -263,7 +263,7 @@ public class Date {
         return splitStr;
     }
 
-    private static boolean isLeapYear (int year){
+    private static boolean isLeapYear (long year){
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 }
