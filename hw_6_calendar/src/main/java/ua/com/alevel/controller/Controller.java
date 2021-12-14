@@ -115,8 +115,9 @@ public class Controller {
                                 System.out.print("Введите число лет, которое хотите прибавить: ");
                                 str = reader.readLine().trim();
                                 if (!str.isEmpty()) year = Long.parseLong(str);
-                                date.addTime(ms, sec, min, hour, day, year);
-                                System.out.println(date.toString(FORMATS[outputMethod - 1]));
+                                if (date.addTime(ms, sec, min, hour, day, year)) {
+                                    System.out.println(date.toString(FORMATS[outputMethod - 1]));
+                                } else System.out.println("Результат выходит за рамки календаря по верхнему пределу");
                             } catch (NumberFormatException | IndexOutOfBoundsException e) {
                                 System.out.println("Недопустимый ввод");
                             }
@@ -249,6 +250,7 @@ public class Controller {
                         }
                         if (!dateValue[2].isEmpty()) {
                             years = Integer.parseInt(dateValue[2]);
+                            validFormat = LimitError(years);
                         }
                     } catch (NumberFormatException e) {
                         validFormat = DateError();
@@ -267,6 +269,7 @@ public class Controller {
                         }
                         if (!dateValue[2].isEmpty()) {
                             years = Integer.parseInt(dateValue[2]);
+                            validFormat = LimitError(years);
                         }
                     } catch (NumberFormatException e) {
                         validFormat = DateError();
@@ -285,6 +288,7 @@ public class Controller {
                         }
                         if (!dateValue[2].isEmpty()) {
                             years = Integer.parseInt(dateValue[2]);
+                            validFormat = LimitError(years);
                         }
                     } catch (NumberFormatException e) {
                         validFormat = DateError();
@@ -305,6 +309,7 @@ public class Controller {
                         }
                         if (!dateValue[2].isEmpty()) {
                             years = Integer.parseInt(dateValue[2]);
+                            validFormat = LimitError(years);
                         }
                     } catch (NumberFormatException e) {
                         validFormat = DateError();
@@ -374,6 +379,14 @@ public class Controller {
     private static boolean DateError() {
         System.out.println("Недопустимый ввод");
         return false;
+    }
+
+    private static boolean LimitError(long year) {
+        if ((year + 1) * 365.25 > 106751991167L) {
+            System.out.println("Дата выходит за пределы календаря");
+            return false;
+        }
+        return true;
     }
 
     private static String[] split(String str, String separator) {

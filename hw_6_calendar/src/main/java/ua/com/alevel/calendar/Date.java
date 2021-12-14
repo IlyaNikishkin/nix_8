@@ -83,7 +83,7 @@ public class Date {
                 tempDay = tempDay - DAYS_OFFSET[tempMonth - 1] + 1;
             }
             tempYear = tempYear + years;
-            if (tempYear >= 0) {
+            if (tempYear >= 0 && !((tempYear + 1) * 365.25 > 106751991167L)) {
                 time = tempTime;
                 year = tempYear;
                 month = tempMonth;
@@ -263,7 +263,7 @@ public class Date {
         return splitStr;
     }
 
-    private static boolean isLeapYear (long year){
+    private static boolean isLeapYear(long year) {
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 }
