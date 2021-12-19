@@ -323,7 +323,7 @@ public class Controller {
                 boolean leapYear = (years % 4 == 0 && years % 100 != 0) || years % 400 == 0;
                 if ((month == 1 && days > 31) || (month == 2 && days > 29 && leapYear)
                         || (month == 2 && days > 28 && !leapYear)
-                        || (month == 3 && days > 30)
+                        || (month == 3 && days > 31)
                         || (month == 4 && days > 30)
                         || (month == 5 && days > 31)
                         || (month == 6 && days > 30)
