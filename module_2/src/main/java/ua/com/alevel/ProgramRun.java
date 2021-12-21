@@ -9,7 +9,7 @@ import static ua.com.alevel.util.TaskFiles.*;
 public class ProgramRun {
 
     public static void run() {
-        createTaskData();
+        createTaskDataIfDoesNotExist();
         new DateConverter().run();
         new FirstUniqueName().run();
         new RoadPrice().run();
@@ -22,7 +22,7 @@ public class ProgramRun {
         System.out.println(inputDir + "\n" + outputDir);
     }
 
-    private static void createTaskData() {
+    private static void createTaskDataIfDoesNotExist() {
         createDirectories(FILE_DIR, INPUT_DIR, OUTPUT_DIR);
         write(INPUT_DIR + DateConverter.INPUT_FILE, """
                 2020/04/05 valid, "04-05-2021" valid
