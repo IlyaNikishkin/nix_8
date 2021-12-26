@@ -1,10 +1,6 @@
 package ua.com.alevel.tasks;
 
 import ua.com.alevel.util.TaskFiles;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import static ua.com.alevel.util.TaskFiles.INPUT_DIR;
