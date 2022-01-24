@@ -18,6 +18,7 @@
         <module>hw_5_collection</module>
         <module>hw_6_calendar</module>
         <module>module_2</module>
+        <module>hw_7_datatable_jdbc</module>
     </modules>
 
     <packaging>pom</packaging>
