@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table}">
+<head>
+    <meta charset="utf-8">
+    <title>Students</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+
+    <tr th:each="student,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${student.getName()}"></td>
+        <td th:text="${student.getAge()}"></td>
+        <td th:text="${#calendars.format(student.getCreated(),'dd MMMM yyyy')}"></td>
+        <td>
+            <a th:href="@{'/students/details/' + ${student.getId()}}" type="button" class="btn btn-primary">details</a>
+        </td>
+        <td>
+            <a th:href="@{'/students/delete/' + ${student.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+    </tr>
+
+
+</div>
+
+</body>
+</html>
