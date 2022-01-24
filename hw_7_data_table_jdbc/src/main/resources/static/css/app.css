@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body {
+    background-size: cover;
+    height: 100%;
+}
+
+a.nav-item.nav-link {
+    color: white;
+}
+
+.sort {
+    cursor: pointer;
+    margin-right: 2em;
+}
