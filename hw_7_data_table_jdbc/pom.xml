@@ -70,7 +70,7 @@
     </dependencies>
 
     <build>
-        <finalName>hw_7_datatable_jdbc</finalName>
+        <finalName>hw_7_data_table_jdbc</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
