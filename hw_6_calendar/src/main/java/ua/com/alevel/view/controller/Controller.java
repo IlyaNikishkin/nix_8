@@ -1,4 +1,4 @@
-package ua.com.alevel.controller;
+package ua.com.alevel.view.controller;
 
 import ua.com.alevel.calendar.Date;
 

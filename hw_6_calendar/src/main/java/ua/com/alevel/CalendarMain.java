@@ -1,6 +1,6 @@
 package ua.com.alevel;
 
-import ua.com.alevel.controller.Controller;
+import ua.com.alevel.view.controller.Controller;
 
 public class CalendarMain {
 

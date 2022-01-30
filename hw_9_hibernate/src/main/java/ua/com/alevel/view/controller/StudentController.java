@@ -1,6 +1,7 @@
 package ua.com.alevel.view.controller;
 
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import org.apache.commons.collections4.MapUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,7 @@ import ua.com.alevel.view.dto.response.StudentResponseDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/students")
@@ -54,10 +56,10 @@ public class StudentController extends BaseController {
     @GetMapping("/groups/{id}")
     public String findAllByGroup(Model model, @PathVariable Long id, WebRequest request) {
         model.addAttribute("group", groupFacade.findById(id));
-        initDataTable(studentFacade.findAllStudentsByGroup(request, id), columnNames, model);
+        initDataTable(groupFacade.findAllStudentsByGroup(request, id), columnNames, model);
         model.addAttribute("createUrl", "/students/all");
         model.addAttribute("createNew", "/students/new/" + id);
-        model.addAttribute("cardHeader", "Group" + groupFacade.findById(id).getName());
+        model.addAttribute("cardHeader", "Group " + groupFacade.findById(id).getName());
         return "pages/students/students_in_group";
     }
 
@@ -78,7 +80,6 @@ public class StudentController extends BaseController {
     public String updateStudentPage(@PathVariable @Valid @Min(value = 1, message = "invalid id") @NotNull() Long id, @ModelAttribute("student") StudentRequestDto dto, Model model, WebRequest request) {
         update_id = id;
         PageData<GroupResponseDto> groups = groupFacade.findAll(request);
-
         model.addAttribute("groupsList", groupFacade.findAll(request));
         return "pages/students/student_update";
     }
