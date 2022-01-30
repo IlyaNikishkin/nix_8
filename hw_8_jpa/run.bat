@@ -1,0 +1,1 @@
+call java -jar .\target\hw_8_jpa.jar
