@@ -19,7 +19,7 @@ public class GroupController extends BaseController {
     private long new_id;
     private final GroupFacade groupFacade;
     private final HeaderName[] columnNames = new HeaderName[]{
-            new HeaderName("id", null, null),
+            new HeaderName("#", null, null),
             new HeaderName("name", "name", "name"),
             new HeaderName("grade", "grade", "grade"),
             new HeaderName("details", null, null),

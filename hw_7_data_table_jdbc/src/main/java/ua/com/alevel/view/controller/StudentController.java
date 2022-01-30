@@ -25,7 +25,7 @@ public class StudentController extends BaseController {
     private final GroupFacade groupFacade;
     private final StudentFacade studentFacade;
     private final HeaderName[] columnNames = new HeaderName[]{
-            new HeaderName("id", null, null),
+            new HeaderName("#", null, null),
             new HeaderName("name", "name", "name"),
             new HeaderName("age", "age", "age"),
             new HeaderName("details", null, null),
@@ -100,7 +100,6 @@ public class StudentController extends BaseController {
     @PostMapping("/new")
     public String createNewStudent(@ModelAttribute("group") StudentRequestDto dto) {
         studentFacade.create(dto);
-        String url = "redirect:/students/groups/" + dto.getGroupId();
-        return url;
+        return "redirect:/students/groups/" + dto.getGroupId();
     }
 }
