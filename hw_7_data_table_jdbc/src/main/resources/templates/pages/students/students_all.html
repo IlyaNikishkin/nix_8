@@ -12,7 +12,7 @@
 <div layout:fragment="data_table_content">
 
     <tr th:each="student,iter : ${pageData.getItems()}">
-        <td th:text="${iter.count}"></td>
+        <td th:text="${iter.count + pageData.pageSize * (pageData.currentPage - 1)}"></td>
         <td th:text="${student.getName()}"></td>
         <td th:text="${student.getAge()}"></td>
         <td>
