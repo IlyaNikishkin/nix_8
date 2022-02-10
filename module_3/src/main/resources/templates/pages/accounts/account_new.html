@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Account</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Account</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/accounts/new}" th:object="${account}" method="post">
+                        <div class="form-account">
+                            <label for="wallet">wallet</label>
+                            <input type="text" class="form-control" id="wallet" aria-describedby="wallet"
+                                   placeholder="Enter wallet" th:field="*{wallet}" required>
+                            <br>
+                            <label for="balance">balance, USD</label>
+                            <input type="number" step="0.01" min="0.01" max="1000000000000" class="form-control" id="balance" aria-describedby="balance"
+                                   placeholder="Enter balance" th:field="*{Balance}" required>
+                        </div>
+                        <input type="hidden" th:field="*{userId}" id="userId" th:value="${account.getUserId}">
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

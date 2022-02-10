@@ -1,4 +1,4 @@
-package ua.com.alevel.dao;
+package ua.com.alevel.persistence.dao;
 
 import ua.com.alevel.db.PostDB;
 import ua.com.alevel.entities.Post;

@@ -2,8 +2,8 @@ package ua.com.alevel.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.com.alevel.dao.PostDao;
-import ua.com.alevel.dao.UserDao;
+import ua.com.alevel.persistence.dao.PostDao;
+import ua.com.alevel.persistence.dao.UserDao;
 import ua.com.alevel.entities.Post;
 import ua.com.alevel.entities.User;
 import ua.com.alevel.util.DynamicArray;

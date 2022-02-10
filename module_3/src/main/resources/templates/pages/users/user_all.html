@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/data_table}">
+<head>
+    <meta charset="utf-8">
+    <title>Users</title>
+</head>
+<body>
+
+<div layout:fragment="data_table_content">
+
+    <tr th:each="user,iter : ${pageData.getItems()}">
+        <td th:text="${iter.count + pageData.pageSize * (pageData.currentPage - 1)}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td>
+            <a th:href="@{'/users/' + ${user.getId()} + '/accounts'}" type="button" class="btn btn-primary">accounts</a>
+        </td>
+        <td>
+            <a th:href="@{'/users/update/' + ${user.getId()}}" type="button" class="btn btn-warning">edit</a>
+        </td>
+        <td>
+            <a th:href="@{'/users/delete/' + ${user.getId()}}" type="button" class="btn btn-danger">delete</a>
+        </td>
+    </tr>
+
+</div>
+
+</body>
+</html>

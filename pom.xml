@@ -21,6 +21,7 @@
         <module>hw_7_data_table_jdbc</module>
         <module>hw_9_hibernate</module>
         <module>hw_8_jpa</module>
+        <module>module_3</module>
     </modules>
 
     <packaging>pom</packaging>

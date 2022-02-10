@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>New Transaction</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>New Transaction</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/transactions/new}" th:object="${transaction}" method="post">
+                        <div class="form-transaction">
+                            <label for="sender">From: select bank account</label>
+                            <select class="form-control" id="sender" th:field="*{senderId}">
+                                <option th:each="account : ${accountsList.items}"
+                                        th:value="${account.getId()}"
+                                        th:text="${account.getUser().getName()} + ' - ' + ${account.getWallet()}
+                                        + ' [$' + ${account.getBalanceDisplay() + ']'}">
+                                </option>
+                            </select>
+                            <br>
+                            <label for="receiver">To: select bank account</label>
+                            <select class="form-control" id="receiver" th:field="*{receiverId}">
+                                <option th:each="account : ${accountsList.items}"
+                                        th:value="${account.getId()}"
+                                        th:text="${account.getUser().getName()} + ' - ' + ${account.getWallet()}
+                                        + ' [$' + ${account.getBalanceDisplay() + ']'}">
+                                </option>
+                            </select>
+                            <br>
+                            <label for="amount">Amount, USD</label>
+                            <input type="number" step="0.01" min="0.01" max="1000000000000" required
+                                   class="form-control" id="amount" aria-describedby="amount"
+                                   placeholder="Enter amount" th:field="*{amount}">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

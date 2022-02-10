@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8">
+    <title>Edit Account</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>Edit Account</h4>
+                </div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/accounts/update}" th:object="${account}" method="post">
+                        <div class="form-account">
+                            <label for="wallet">wallet</label>
+                            <input type="text" class="form-control" id="wallet" aria-describedby="wallet"
+                                   placeholder="Enter new wallet" th:field="*{wallet}" required>
+                            <label for="balance">balance, USD</label>
+                            <input type="number" step="0.01" min="0.01" max="1000000000000" class="form-control"
+                                   id="balance" aria-describedby="balance"
+                                   placeholder="Enter new balance" th:field="*{balance}" required>
+                            <div class="form-user">
+                                <label for="user">User select</label>
+                                <select class="form-control" id="user" th:field="*{userId}">
+                                    <option th:each="user : ${usersList.items}"
+                                            th:value="${user.getId()}"
+                                            th:text="${user.getName()}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
