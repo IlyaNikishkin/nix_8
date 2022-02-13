@@ -19,4 +19,6 @@ public interface AccountService extends BaseService<Account> {
     List<Transaction> findAllTransactionsByAccount (Long id);
 
     void exportToCsv(LocalDateTime minDate, LocalDateTime maxDate, Long id);
+
+    DataTableResponse<Account> findAllAccounts();
 }

@@ -197,8 +197,8 @@ public class StudentDaoImpl implements StudentDao {
 
     private Student convertResultSetToStudent(ResultSet resultSet) throws SQLException {
         Long studentId = resultSet.getLong("st.id");
-        Timestamp employeeCreated = resultSet.getTimestamp("st.created");
-        Timestamp employeeUpdated = resultSet.getTimestamp("st.updated");
+        Timestamp studentCreated = resultSet.getTimestamp("st.created");
+        Timestamp studentUpdated = resultSet.getTimestamp("st.updated");
         String studentName = resultSet.getString("st.name");
         int age = resultSet.getInt("age");
 
@@ -215,8 +215,8 @@ public class StudentDaoImpl implements StudentDao {
 
         Student student = new Student();
         student.setId(studentId);
-        student.setCreated(new Date(employeeCreated.getTime()));
-        student.setUpdated(new Date(employeeUpdated.getTime()));
+        student.setCreated(new Date(studentCreated.getTime()));
+        student.setUpdated(new Date(studentUpdated.getTime()));
         student.setName(studentName);
         student.setAge(age);
         student.setGroup(group);

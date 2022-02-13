@@ -103,6 +103,16 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
+    public DataTableResponse<Account> findAllAccounts() {
+        CriteriaQuery<Account> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(Account.class);
+        criteriaQuery.from(Account.class);
+        DataTableResponse<Account> dataTableResponse = new DataTableResponse<>();
+        dataTableResponse.setItems(entityManager.createQuery(criteriaQuery)
+                .getResultList());
+        return dataTableResponse;
+    }
+
+    @Override
     public List<Transaction> findListTransactions(Long accountId) {
         return findById(accountId).getTransactions();
     }

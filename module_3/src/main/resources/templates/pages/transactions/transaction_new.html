@@ -25,7 +25,7 @@
                                 <option th:each="account : ${accountsList.items}"
                                         th:value="${account.getId()}"
                                         th:text="${account.getUser().getName()} + ' - ' + ${account.getWallet()}
-                                        + ' [$' + ${account.getBalanceDisplay() + ']'}">
+                                        + ' [$' + ${account.getBalanceDisplay()} + ']'">
                                 </option>
                             </select>
                             <br>

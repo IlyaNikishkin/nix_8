@@ -51,7 +51,7 @@ public class TransactionController extends BaseController {
     @GetMapping("/new")
     public String redirectToNewTransactionPage(Model model, WebRequest request) {
         model.addAttribute("transaction", new TransactionRequestDto());
-        model.addAttribute("accountsList", accountFacade.findAll(request));
+        model.addAttribute("accountsList", accountFacade.findAllAccounts());
         return "pages/transactions/transaction_new";
     }
 

@@ -12,4 +12,6 @@ public interface AccountDao extends BaseDao<Account>{
     DataTableResponse<Transaction> findAllTransactionsByAccount(DataTableRequest request, Long userId);
 
     List<Transaction> findListTransactions(Long accountId);
+
+    DataTableResponse<Account> findAllAccounts();
 }
