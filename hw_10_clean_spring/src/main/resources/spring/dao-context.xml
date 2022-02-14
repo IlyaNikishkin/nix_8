@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="groupDao" class="ua.com.alevel.dao.impl.GroupDaoImpl">
+        <constructor-arg ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="studentDao" class="ua.com.alevel.dao.impl.StudentDaoImpl">
+        <constructor-arg ref="entityManagerFactory"/>
+    </bean>
+
+</beans>
